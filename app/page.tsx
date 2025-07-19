@@ -109,12 +109,37 @@ export default function Home() {
 
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 to-black text-white">
+  <div className="relative min-h-screen flex flex-col items-center justify-center text-white bg-amber-50 overflow-hidden">
+     {/* BLOBS */}
+    <div
+      className="absolute top-10 left-[-10%] w-[40vw] h-[40vw] rounded-full opacity-30 blur-[80px]"
+      style={{
+        background: 'linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%)',
+      }}
+    />
+    <div
+      className="absolute top-[30%] right-[-15%] w-[30vw] h-[30vw] rounded-full opacity-25 blur-[70px]"
+      style={{
+        background: 'linear-gradient(45deg, #F97316 0%, #FBBF24 100%)',
+      }}
+    />
+    <div
+      className="absolute bottom-[15%] left-[15%] w-[50vw] h-[50vw] rounded-full opacity-20 blur-[90px]"
+      style={{
+        background: 'linear-gradient(225deg, #FCD34D 0%, #D97706 100%)',
+      }}
+    />
+    <div
+      className="absolute bottom-10 right-[20%] w-[35vw] h-[35vw] rounded-full opacity-25 blur-[75px]"
+      style={{
+        background: 'linear-gradient(315deg, #FBBF24 0%, #B45309 100%)',
+      }}
+    />
       <div className="text-center space-y-6 p-8">
         <div className="flex justify-center">
           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-orange-300 shadow-lg">
             <img
-              src="/profile-picture.jpg" 
+              src="/profile-picture.jpg"
               alt="Mon visage"
               className="w-full h-full object-cover"
             />
@@ -123,11 +148,11 @@ export default function Home() {
         <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-orange-600">
           Théotime Huybrechts
         </h1>
-        
+
         <p className="text-xl text-gray-400 max-w-lg mx-auto">
-          Student Software Engineer 
+          Student Software Engineer
         </p>
-                <TextGenerateEffect words="À la recherche d'une alternance" />
+        <TextGenerateEffect words="À la recherche d'une alternance" />
 
         <button className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full font-semibold hover:opacity-90 transition-opacity">
           Commencer
