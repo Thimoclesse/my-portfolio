@@ -2,8 +2,7 @@ export default function BackgroundBlobs() {
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
       <svg
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[60vw] h-[60vh] opacity-40 blur-3xl"
-        viewBox="0 0 600 600"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[60vw] h-[60vh] opacity-40 blur-3xl animate-blob"        viewBox="0 0 600 600"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
