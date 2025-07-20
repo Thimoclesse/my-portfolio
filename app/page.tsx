@@ -114,44 +114,51 @@ export default function Home() {
 
     <div className="min-h-screen bg-gradient-to-b from-white-50 to-black-100 text-gray-900 overflow-hidden">
       <Header />
- <main className="pt-20 min-h-screen bg-[rgb(242,230,215)]">
-      <div className="text-center space-y-6 p-8">
-        <div className="flex justify-center">
-          <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-orange-300 shadow-lg">
-            <img
-              src="/profile-picture.jpg"
-              alt="Mon visage"
-              className="w-full h-full object-cover"
-            />
+      <main className="pt-20 min-h-screen">
+        <div className="text-center space-y-6 p-8">
+          <div className="flex justify-center">
+            <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-orange-300 shadow-lg mb-10">
+              <img
+                src="/profile-picture.jpg"
+                alt="Mon visage"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
-        </div>
-        <div className="max-w-lg mx-auto text-left">
-          <h1 className="text-5xl font-poppins text-[rgb(41,37,36)] mb-4">
+          <h1 className="text-5xl mx-auto font-poppins text-[rgb(41,37,36)] mb-4">
             Théotime Huybrechts
           </h1>
-          <p className="text-xl text-gray-600">
-            Software Engineer Studying at Efrei
-          </p>
-        </div>
-        <TextGenerateEffect words="À la recherche d'une alternance" />
-
-        <button className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full font-semibold hover:opacity-90 transition-opacity mb-120">
-          Commencer
-        </button>
-        <WobbleCard>
-          <div className="text-center text-white">
-            <h2 className="text-2xl font-semibold">Card Content</h2>
-            <p>Voici un contenu pour la carte avec un effet de mouvement !</p>
+          <div className="flex items-center justify-center text-xl text-gray-600 mb-10">
+            <div className="relative inline-block">
+              <div className="flex items-center justify-center text-gray-600 mb-10">
+  <p className="text-4xl text-left">
+    Student <span className="underline-animate font-semibold"> Software Engineer</span> learning at Efrei
+  </p>
+  <img src="/logo-efrei.svg" alt="Logo" className="h-8 w-8 fill-current text-gray-600 ml-2" />
+</div>
+            </div>
           </div>
-        </WobbleCard>
-        <div className="mt-12 w-full max-w-5xl">
-          <Timeline data={timelineData} />
+          
+          <div className="mb-40" />
+          <WobbleCard>
+            <div className="text-center text-gray-600 ">
+              <TextGenerateEffect 
+                words="À la recherche d'une Alternance" 
+                boldWords={["alternance"]}
+                fontWeight={700}
+              />
+            </div>
+          </WobbleCard>
+          <div className="mb-40" />
+
+          <div className="mt-12 w-full max-w-5xl">
+            <Timeline data={timelineData} />
+          </div>
+          <div className="mt-16 w-full max-w-6xl">
+            <h2 className="text-3xl font-bold mb-6">Mes projets</h2>
+            <FocusCards cards={cards} />
+          </div>
         </div>
-        <div className="mt-16 w-full max-w-6xl">
-          <h2 className="text-3xl font-bold mb-6">Mes projets</h2>
-          <FocusCards cards={cards} />
-        </div>
-      </div>
       </main>
     </div>
   );

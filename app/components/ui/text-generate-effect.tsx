@@ -8,11 +8,15 @@ export const TextGenerateEffect = ({
   className,
   filter = true,
   duration = 0.5,
+  boldWords = [],
+  fontWeight = 600,
 }: {
   words: string;
   className?: string;
   filter?: boolean;
   duration?: number;
+  boldWords?: string[];
+  fontWeight?: number;
 }) => {
   const [scope, animate] = useAnimate();
   let wordsArray = words.split(" ");
@@ -36,20 +40,26 @@ export const TextGenerateEffect = ({
 
   const renderWords = () => {
     return (
-      <motion.div ref={scope} className="flex flex-wrap justify-center gap-x-1">
-        {wordsArray.map((word, idx) => (
-          <motion.span
-            key={word + idx}
-            className="opacity-0 text-2xl font-semibold tracking-wide transition-transform duration-300 hover:scale-105"
-            style={{
-              filter: filter ? "blur(10px)" : "none",
-              transform: "translateY(10px) scale(0.95)",
-              display: "inline-block",
-            }}
-          >
-            {word}&nbsp;
-          </motion.span>
-        ))}
+      <motion.div ref={scope} className="flex flex-nowrap justify-center gap-x-1 whitespace-nowrap">
+        {wordsArray.map((word, idx) => {
+          const isBold = boldWords.includes(word.toLowerCase());
+          return (
+            <motion.span
+              key={word + idx}
+              className={cn(
+                "opacity-0 text-3xl tracking-wide transition-transform duration-500 hover:scale-105 whitespace-nowrap",
+                isBold ? `font-${fontWeight}` : "font-normal"
+              )}
+              style={{
+                filter: filter ? "blur(10px)" : "none",
+                transform: "translateY(10px) scale(0.95)",
+                display: "inline-block",
+              }}
+            >
+              {word}&nbsp;
+            </motion.span>
+          );
+        })}
       </motion.div>
     );
   };
