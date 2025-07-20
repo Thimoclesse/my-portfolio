@@ -5,6 +5,9 @@ import { Timeline } from "./components/ui/timeline";
 import { FocusCards } from "./components/ui/focus-cards";
 import BackgroundBlobs from "./components/ui/BackgroundBlobs";
 import { Header } from "./components/ui/Header";
+import { CardContainer, CardBody, CardItem } from "./components/ui/3d-card";
+import { ScrollLinkedUnderline } from "./components/ui/ScrollAnimatedUnderline";
+
 
 
 export default function Home() {
@@ -130,25 +133,78 @@ export default function Home() {
           </h1>
           <div className="flex items-center justify-center text-xl text-gray-600 mb-10">
             <div className="relative inline-block">
-              <div className="flex items-center justify-center text-gray-600 mb-10">
-  <p className="text-4xl text-left">
-    Student <span className="underline-animate font-semibold"> Software Engineer</span> learning at Efrei
-  </p>
-  <img src="/logo-efrei.svg" alt="Logo" className="h-8 w-8 fill-current text-gray-600 ml-2" />
+<div className="flex justify-center text-gray-600 mb-10">
+<p className="text-4xl text-left flex items-center flex-wrap">
+  <span className="mr-2">Student</span>
+  <ScrollLinkedUnderline /> 
+    <span className="ml-2">learning at Efrei</span>
+  <img src="/logo-efrei.svg" alt="Logo" className="h-8 w-8 ml-2" />
+</p>
 </div>
             </div>
           </div>
           
-          <div className="mb-40" />
-          <WobbleCard>
-            <div className="text-center text-gray-600 ">
-              <TextGenerateEffect 
-                words="À la recherche d'une Alternance" 
-                boldWords={["alternance"]}
-                fontWeight={700}
-              />
-            </div>
-          </WobbleCard>
+          <div className="mb-20" />
+  <CardContainer className="inter-var">
+<CardBody className="bg-[#292524] relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] border-white/[0.2] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border border-black/[0.1]">
+
+        <CardItem
+          translateZ="50"
+          className="text-xl font-bold text-neutral-600 dark:text-white"
+        >
+          À la recherche d'une Alternance
+        </CardItem>
+        <CardItem
+          as="p"
+          translateZ="60"
+          className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+        >
+          Pour une durée de 1 an à partir de novembre 2025
+        </CardItem>
+        <CardItem
+          translateZ="100"
+          rotateX={20}
+          rotateZ={-10}
+          className="w-full mt-4"
+        >
+          <img
+            src="https://prmeng.rosselcdn.net/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2023/06/23/node_426318/39646530/public/2023/06/23/a_chaque_alternance_son_contrat.jpg?itok=-FqhjJGF1687553433"
+            height="1000"
+            width="1000"
+            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+            alt="thumbnail"
+          />
+        </CardItem>
+        <div className="flex justify-between items-center mt-20">
+          <CardItem
+            translateZ={20}
+            translateX={-40}
+            as="button"
+            className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+          >
+            En savoir plus
+          </CardItem>
+          <CardItem
+            translateZ={20}
+            translateX={40}
+            as="button"
+            className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+          >
+            Me contacter
+          </CardItem>
+        </div>
+      </CardBody>
+    </CardContainer>
+            {/* <WobbleCard>
+              À la recherche d'une Alternance
+              <div className="text-center text-gray-600 ">
+                <TextGenerateEffect 
+                  words="" 
+                  boldWords={["alternance"]}
+                  fontWeight={700}
+                />
+              </div>
+            </WobbleCard> */}
           <div className="mb-40" />
 
           <div className="mt-12 w-full max-w-5xl">

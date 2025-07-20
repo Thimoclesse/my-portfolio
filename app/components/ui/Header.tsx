@@ -9,7 +9,7 @@ export function Header() {
       setScrolled(window.scrollY > 0);
     }
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // check au chargement
+    handleScroll(); 
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

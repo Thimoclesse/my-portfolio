@@ -1,51 +1,42 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+/* Root variables */
 :root {
-  --background: #FEF1DF;
+  --background: rgba(242,230,215);
   --foreground: #292524;
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Custom theme variables */
-:root {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #FEF1DF;
-    --foreground: #292524;
-  }
-}
-
+/* Global styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Poppins', Helvetica, sans-serif;
+  font-family: var(--font-sans);
   position: relative;
   min-height: 100vh;
 }
 
+/* Fixed background layer */
 .fixed-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #FEF1DF;
+  background-color: var(--background);
   z-index: -1;
   pointer-events: none;
 }
 
-/* Wrapper pour le contenu */
+/* Content wrapper */
 .content-wrapper {
   position: relative;
   z-index: 1;
   min-height: 100vh;
 }
 
+/* Blob animation */
 @keyframes blobMove {
   0%, 100% {
     transform: translate(0, 0) scale(1);
@@ -59,13 +50,13 @@ body {
   animation: blobMove 7s infinite ease-in-out;
 }
 
-
+/* Font class */
 .font-poppins {
-  font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-weight: 900;
 }
 
-
+/* Underline animation */
 @keyframes highlight {
   0% {
     background-size: 0% 0.5rem;
@@ -80,6 +71,5 @@ body {
   background-repeat: no-repeat;
   background-size: 0% 0.5rem;
   background-position: 0 88%;
-  animation: highlight 1s ease forwards;
-  transition: background-size 0.3s ease;
+  transition: background-size 0.1s ease-out;
 }
