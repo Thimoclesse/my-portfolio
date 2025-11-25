@@ -32,7 +32,6 @@ jobs:
     name: SAST - Static Code Analysis
     runs-on: ubuntu-latest
 
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -56,16 +55,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Gitleaks
-        uses: gitleaks/gitleaks-action@v2
-
-      - name: Run Gitleaks Scan
-        uses: gitleaks/gitleaks-action@v2
-        with:
-          args: detect --source . --verbose
-
-  github-token:
-      - name: Run Gitleaks
+      - name: Gitleaks Scan
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: detect --source . --verbose
