@@ -161,6 +161,7 @@ Each security scan generates artifacts that can be downloaded from GitHub Action
 
 ## Report on snyk (should upgrade next on my project)
 ![alt text](image-3.png)
+After update, no problems anymore
 
 ## Snyk directly on the project
 ![alt text](image-4.png)
