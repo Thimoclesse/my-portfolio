@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - dev   # On ajoute dev pour le scan non bloquant
+      - dev
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
@@ -29,9 +29,14 @@ jobs:
         run: snyk config set api="$SNYK_TOKEN"
 
       - name: Run Snyk SCA Scan
-        run: snyk test --all-projects
-        # Scan non bloquant sur dev, bloquant sur main
+        run: snyk test --all-projects --json > sca-report.json
         continue-on-error: ${{ github.ref == 'refs/heads/dev' }}
+
+      - name: Upload SCA Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: sca-report
+          path: sca-report.json
 
   sast:
     name: SAST - Static Code Analysis
@@ -49,8 +54,14 @@ jobs:
         run: snyk config set api="$SNYK_TOKEN"
 
       - name: Run Snyk Code (SAST)
-        run: snyk code test
+        run: snyk code test --sarif > sast-report.sarif
         continue-on-error: ${{ github.ref == 'refs/heads/dev' }}
+
+      - name: Upload SAST Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: sast-report
+          path: sast-report.sarif
 
   secrets-scan:
     name: Secret Scanning - Gitleaks
@@ -59,10 +70,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # important pour éviter l’erreur de diff
+          fetch-depth: 0
 
       - name: Run Gitleaks Scan
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          report-path: secrets-report.html
+          report-format: html
         continue-on-error: ${{ github.ref == 'refs/heads/dev' }}
+
+      - name: Upload Secrets Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: secrets-report
+          path: secrets-report.html
